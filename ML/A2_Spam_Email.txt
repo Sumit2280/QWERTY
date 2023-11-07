@@ -1,0 +1,68 @@
+import pandas as pd
+
+data = pd.read_csv('emails.csv')
+data
+
+df.head()
+
+df.head(10)
+
+df.tail()
+
+df.tail(10)
+
+df.sample()
+
+df.sample(5)
+
+df.describe()
+
+df.info()
+
+df.columns
+
+df.dtypes
+
+df.shape[0]
+
+df.shape[1]
+
+df.isnull().sum()
+
+df.dropna()
+
+df.isnull().sum()
+
+data.drop('Email No.',axis=1, inplace=True)
+
+
+
+
+from sklearn.model_selection import train_test_split
+X = data.drop('Prediction' , axis = 1)
+Y = data['Prediction']
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.2)
+
+from sklearn.neighbors import KNeighborsClassifier
+model = KNeighborsClassifier()
+model.fit(X_train, Y_train)
+Y_predict = model.predict(X_test)
+
+
+from sklearn import metrics
+metrics.accuracy_score(y_test, y_pred)
+
+metrics.confusion_matrix(y_test, y_pred)
+
+
+
+from sklearn.svm import SVC 
+svc_model = SVC()
+svc_model.fit(X_train, Y_train)
+Y_Predict = svc_model.predict(X_test)
+
+
+metrics.accuracy_score(y_test, y_pred)
+
+metrics.confusion_matrix(y_test, y_pred)
+

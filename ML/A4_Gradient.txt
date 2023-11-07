@@ -1,0 +1,38 @@
+currX = 2
+learning_rate = 0.01
+precision = 0.0000001
+maxIteration = 1000
+interation = 0
+diff = 1
+df = lambda x: 2*(x + 3)
+
+
+x = []
+y = []
+
+def solve(x):
+  return (x + 3)**2
+
+y.append(solve(currX))
+x.append(currX)
+
+while diff > precision and interation < maxIteration:
+  prevX = currX
+  currX = prevX - (learning_rate * df(prevX))
+
+  x.append(currX)
+  y.append(solve(currX))
+
+  diff = abs(prevX - currX)
+  interation = interation + 1;
+  print("Iteration ",interation," x: ",currX,"y: ",solve(currX))
+
+print("Local minima : ", (currX))
+
+
+import matplotlib.pyplot as plt
+plt.scatter(x,y)
+plt.xlabel('x-values')
+plt.ylabel('y-values')
+plt.title('y=(x+3)^2')
+plt.show()

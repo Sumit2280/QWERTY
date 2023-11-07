@@ -1,0 +1,71 @@
+import pandas as pd
+import numpy as np
+
+df = pd.read_csv('Churn_Modelling.csv')
+df
+
+df.head()
+
+df.head(10)
+
+df.tail()
+
+df.tail(10)
+
+df.sample()
+
+df.sample(5)
+
+df.describe()
+
+df.info()
+
+df.columns
+
+df.dtypes
+
+df.shape[0]
+
+df.shape[1]
+
+df.isnull().sum()
+
+df.dropna()
+
+df.isnull().sum()
+
+
+df = df.drop(['RowNumber','Surname','CustomerId'], axis = 1)
+
+
+X = data.drop('Exited', axis = 1)
+Y = data['Exited']
+
+from sklearn.model_selection import train_test_split
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.2)
+
+from sklearn.preprocessing import StandardScaler
+sc = StandardScaler()
+x_train = sc.fit_transform(x_train)
+x_test = sc.fit_transform(x_test)
+
+
+import keras
+from keras.models import Sequential
+from keras.layers import Dense #To create hidden layers
+
+classifier = Sequential()
+classifier.add(Dense(activation = "relu", input_dim = 11,units = 6, kernel_initializer = "uniform"))
+classifier.add(Dense(activation = "relu", units = 6, kernel_initializer = "uniform"))   #Adding second hidden layers
+classifier.add(Dense(activation = "sigmoid", units = 1,kernel_initializer = "uniform"))  #Final neuron will be having siigmoid function
+
+classifier.compile(optimizer="adam", loss = 'binary_crossentropy', metrics = ['accuracy']) #To compile the Artificial Neural Network. Ussed Binary crossentropy as we just have only two output
+classifier.summary() #3 layers created. 6 neurons in 1st,6neurons in 2nd layer and 1 neuron in last
+
+classifier.fit(x_train,y_train,batch_size=10,epochs=50)
+
+from sklearn import metrics
+metrics.accuracy_score(y_test, y_pred)
+
+metrics.confusion_matrix(y_test, y_pred)
+
